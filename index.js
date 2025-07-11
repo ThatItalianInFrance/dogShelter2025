@@ -25,7 +25,7 @@ async function initApp() {
     migrate: "alter", // alter, prod
     port: 3306,
   });
-  await loadModels("../models");
+  await loadModels(path.join(__dirname, "orm-models"));
   // global.Models = Models;
 
   // const { Lists } = Models;
