@@ -6,7 +6,7 @@ const { MorphineDb, Models, loadModels } = require("morphine-orm");
 const Login = require("../services/Login.model.js");
 // const News = require('../models/News.model.js');
 // const { Models } = require("../lib/MorphineOrm");
-// const dayjs = require('dayjs');
+const dayjs = require('dayjs');
 const { Dogs } = Models;
 const path = require("path");
 const { Eta } = require("eta");
@@ -74,24 +74,24 @@ const getDogsList = async (req, res) => {
 //     let stalli = await Box.find();
 //     res.render("box_list.eta", { stalli });
 // }
-// const getCaneId = async (req, res) => {
-//     let cane = await Dogs.findone({ do_id: req.params.id }).populate("kind").exec();
-//     console.log("🚀 ~ file: Website.controller.js:12 ~ getCaneId ~ cane:", cane)
-//     if (!cane) {
-//         res.redirect("/cani/list");
-//         return;
-//     }
-//     cane.months = Math.round((Date.now() - Date.parse(cane.do_birth)) / 1000 / 60 / 60 / 24 / 30);
-//     console.log( (Date.now() - Date.parse(cane.do_birth)) / 1000 / 60 / 60 / 24 / 30);
-//     cane.months = dayjs().diff(cane.do_birth, 'months')
-//     res.render("cane_details.eta", { cane });
-// }
+const getDogId = async (req, res) => {
+    let dog = await Dogs.findone({ do_id: req.params.id }).populate("kind").exec();
+    console.log("🚀 ~ file: Website.controller.js:12 ~ getCaneId ~ cane:", dog)
+    if (!dog) {
+        res.redirect("/dogs/list");
+        return;
+    }
+    dog.months = Math.round((Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
+    console.log( (Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
+    dog.months = dayjs().diff(dog.do_birth, 'months')
+    res.send(eta.render("dog_details.eta", { dog }));
+}
 
 module.exports = {
   getLogin,
   getHome,
   getDogsList,
-  // getCaneId,
+  getDogId,
   // postLogin,
   // getBoxList,
   // getNews,

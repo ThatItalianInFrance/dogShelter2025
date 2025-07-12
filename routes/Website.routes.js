@@ -7,7 +7,7 @@ const cors = require("cors");
 router.get('/', cors(), websiteController.getHome);
 router.get('/login', websiteController.getLogin);
 router.get('/dogs/list', websiteController.getDogsList);
-// router.get('/cane/:id', websiteController.getCaneId);
+router.get('/dog/:id', websiteController.getDogId);
 // router.get('/cane/visit/:id', websiteController.getVisit);
 // router.get('/stalli', websiteController.getBoxList);
 // router.get('/news', websiteController.getNews);

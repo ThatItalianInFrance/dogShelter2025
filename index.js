@@ -22,7 +22,7 @@ async function initApp() {
     user: process.env.DBUSER,
     password: process.env.DBPASSWORD,
     database: process.env.DBNAME,
-    migrate: "alter", // alter, prod
+    migrate: "safe", // alter, recreate, safe
     port: 3306,
   });
   await loadModels(path.join(__dirname, "orm-models"));
