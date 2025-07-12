@@ -1,3 +1,5 @@
+const { MorphineDb, Models, loadModels } = require("morphine-orm");
+
 // const Box = require('../models/Box.model.js');
 // const Dogs = require('../models/Cani.model.js');
 // const Kind = require('../models/Cani.model.js');
@@ -5,7 +7,7 @@ const Login = require('../models/Login.model.js');
 // const News = require('../models/News.model.js');
 // const { Models } = require("../lib/MorphineOrm");
 // const dayjs = require('dayjs');
-// const { Dogs } = Models;
+const { Dogs } = Models;
 const path = require("path");
 const { Eta } = require("eta");
 const viewsPath = path.join(__dirname, "../views");
@@ -18,9 +20,9 @@ const eta = new Eta({
 const getHome = async (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
 
-    // let dogs = await Dogs.find().populate('kind').exec();
+    let dogs = await Dogs.find().populate('kind').exec();
 
-    res.send(eta.render("../views/home.eta", {  })) ;
+    res.send(eta.render("../views/home.eta", { dogs })) ;
     // res.render("home.eta", { dogs });
 
     // res.redirect('/cani/list');
