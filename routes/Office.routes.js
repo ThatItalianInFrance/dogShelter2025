@@ -22,7 +22,7 @@ const router = Router();
 
 // CANI Router
 router.get('/dogs', dogsController.getDogs);
-// router.get('/animal/:id', caniController.getCaneId);
+router.get('/animal/:id', dogsController.getDogId);
 // router.post('/cane', caniController.postCane);
 // router.put('/cane/:id', caniController.putCaneId);
 // router.delete('/cane/:id', caniController.deleteCaneId);

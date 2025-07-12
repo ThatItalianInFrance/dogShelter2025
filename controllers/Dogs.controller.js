@@ -21,16 +21,16 @@ module.exports = {
     res.send({ data: rows });
   },
 
-  getCaneId: async (req, res) => {
+  getDogId: async (req, res) => {
     // let row = await Cani.findone(req.params.id);
     let row = await Dogs.findone({ do_id: req.params.id })
       .populate("kind")
       .exec();
-    console.log("🚀 ~ file: Cani.controller.js:23 ~ getCaneId: ~ row:", row);
+    // console.log("🚀 ~ file: Cani.controller.js:23 ~ getCaneId: ~ row:", row);
     let AttachmentsList = [];
     const uploadFolder = path.join(
       __dirname,
-      "../assets/cani/",
+      "../assets/dogs/",
       `${req.params.id}`
     );
 
@@ -39,7 +39,7 @@ module.exports = {
       if (err) {
         // Handle the error
         console.error(err);
-        // return AttachmentsList;
+        return AttachmentsList;
       }
       files.forEach((file) => {
         // Loop through the files
