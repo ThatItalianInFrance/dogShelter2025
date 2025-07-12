@@ -126,14 +126,14 @@
           <div class="p-4 text-white">
             <div class="">
               <strong class="" style="border-bottom: solid 2px white"
-                >32 ANIMAUX T'ATTENDENT</strong
+                >32 ANIMALS WAITING</strong
               >
             </div>
             <h2 class="">
-              <strong class=""> ADOPTE UN ANIMAL DE NOTRE REFUGE </strong>
+              <strong class=""> ADOPT AN ANIMAL FROM OUR SHELTER </strong>
             </h2>
             <button class="mt-4 btn bg-dark text-white rounded-0">
-              VOIR LES ANIMAUX
+              SEE THE ANIMALS
             </button>
           </div>
         </div>
@@ -145,8 +145,8 @@
             <div class="hero2 mb-3">
               <h2 class="p-5">
                 <strong class="">
-                  COMMENT <br />
-                  NOUS AIDER?
+                  HOW <br />
+                  TO HELP US?
                 </strong>
               </h2>
             </div>
@@ -156,18 +156,18 @@
           <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="hero3">
               <div class="text-white text-end pt-4 pe-4">
-                <h2 class="fw-bold mb-0">CONSEILS</h2>
-                <p class="text-white text-end fw-bold spacing">POUR ADOPTER</p>
+                <h2 class="fw-bold mb-0">HINTS</h2>
+                <p class="text-white text-end fw-bold spacing">TO ADOPT</p>
               </div>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="hero4">
               <h2 class="text-white text-end mb-0 p-4 pb-0">
-                <strong class="fw-bold"> COMMENT </strong>
+                <strong class="fw-bold"> HOW </strong>
               </h2>
               <p class="px-4 text-white text-end fw-bold spacing">
-                BIEN LE NOURRIR ?
+                TO FEED THEM PROPERLY ?
               </p>
             </div>
           </div>
@@ -184,8 +184,8 @@
 <section id="dogs-section" class="bg-primary pt-5 mt-5">
   <div class="container">
     <div class="text-center text-white text-uppercase">
-      <h2>32 animaux n'attendent que toi!!!</h2>
-      <p>Fais leur connaissance et Decouvre comment nous les bichonons</p>
+      <h2>32 animals are waiting for you!!</h2>
+      <p>Get to know them and see how we take care of them</p>
     </div>
     <div
       class="dog_carts d-flex justify-content-between align-center flex-wrap"
@@ -207,8 +207,8 @@
           <p><%= dog.do_attitude %></p>
           <p><%= dog.do_birth %></p>
           <p>Race: <%= dog.ki_id %></p>
-          <p>Vaccine, vermifuge, sterilise</p>
-          <p>Entre au chenil il y a 2 mois</p>
+          <p>Vaccined, without parasites, sterilized</p>
+          <p>Became a guest ... days ago</p>
         </div>
       </div>
       <% } %> <% }); %>

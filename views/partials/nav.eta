@@ -21,7 +21,7 @@
   						Click me
   					</a>
   					<ul class="dropdown-menu">
-  						<li><a class="dropdown-item" href="https://canile-office.wywiwyg.net/" target="_blank">back office</a></li>
+  						<li><a class="dropdown-item" href="#" target="_blank">back office</a></li>
   						<li><a class="dropdown-item" href="/login">login</a></li>
   						<li>
   							<hr class="dropdown-divider" />
