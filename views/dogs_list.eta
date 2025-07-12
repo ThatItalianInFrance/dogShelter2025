@@ -1,0 +1,46 @@
+<% layout("lay.eta") %>
+<style>
+	.img-thumbnail {
+		/* width: 250px; fixed width */
+		height: 150px;
+		/* fixed height to maintain the aspect ratio */
+		object-fit: cover;
+		/* this will ensure that the image covers the area without distortion */
+	}
+</style>
+
+<body>
+	<div class="p-5"></div>
+	<div class="container">
+		<div class="row">
+			<% for (let i=0; i < it.dogs.length; i++) { %> <% const dog=it.dogs[i];
+      %>
+			<div class="col-md-3">
+				<a href="/cane/<%= dog.do_id %>" class="link-body-emphasis text-decoration-none text-body-secondary">
+					<div class="card mb-3" style="">
+
+						<div class="">
+
+							<img src="/cani/<%= dog.do_id %>.jpg" class="card-img-top img-thumbnail" alt="..." />
+							<div class="card-body">
+								<div class="card-title">
+
+								</div>
+								<h3><%= dog.do_name %></h3>
+								<h5 class="">Character</h5>
+								<small class=""><%= dog.do_attitude %></small>
+								<h5>Kind</h5>
+								<p class="card-text"><%= dog.ki_id %></p>
+								<h5>Biter</h5>
+								<p class="card-text"><%= dog.do_biter %></p>
+
+							</div>
+
+						</div>
+					</div>
+				</a>
+			</div>
+			<% } %>
+		</div>
+
+</body>

@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-const {Eta} = require("eta");
+const { Eta } = require("eta");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const path = require("path")
+const path = require("path");
 require("dotenv").config({ path: `.env.local` });
-const db = require("./models/MariaDB.js");
+const db = require("./services/MariaDB.js");
 // const db = require("./models/Db.js");
 // const fs = require("fs");
 // const dayjs = require('dayjs')
@@ -51,8 +51,6 @@ async function initApp() {
   // await Lists.destroy(2).exec();
   // await Lists.destroy("li_id=?", [2]).exec();
 
-
-
   await initExpress();
 
   await initRoutes();
@@ -60,15 +58,13 @@ async function initApp() {
 }
 
 async function initExpress() {
+  // Absolute path to views
+  // const viewsPath = path.join(__dirname, "views");
 
- // Absolute path to views
-// const viewsPath = path.join(__dirname, "views");
-
-// const eta = new Eta({
-//   views: viewsPath, // Important: absolute path!
-//   cache: false
-// });
-
+  // const eta = new Eta({
+  //   views: viewsPath, // Important: absolute path!
+  //   cache: false
+  // });
 
   // app.engine("eta", eta.renderFile);
 
@@ -96,15 +92,13 @@ async function initExpress() {
   app.use(cors());
 
   app.use(express.static("assets"));
-
-
 }
 
 async function initRoutes() {
   const websiteRoutes = require("./routes/Website.routes");
   app.use("/", websiteRoutes);
-  // const officeRoutes = require("./routes/Office.routes");
-  // app.use("/office", officeRoutes);
+  const officeRoutes = require("./routes/Office.routes");
+  app.use("/office", officeRoutes);
 }
 
 async function launchServer() {

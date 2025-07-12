@@ -133,7 +133,7 @@
               <strong class=""> ADOPT AN ANIMAL FROM OUR SHELTER </strong>
             </h2>
             <button class="mt-4 btn bg-dark text-white rounded-0">
-              SEE THE ANIMALS
+              <a class="nav-link" href="/dogs/list">SEE THE ANIMALS</a>
             </button>
           </div>
         </div>

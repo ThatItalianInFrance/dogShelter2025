@@ -3,7 +3,7 @@ const { MorphineDb, Models, loadModels } = require("morphine-orm");
 // const Box = require('../models/Box.model.js');
 // const Dogs = require('../models/Cani.model.js');
 // const Kind = require('../models/Cani.model.js');
-const Login = require('../models/Login.model.js');
+const Login = require("../services/Login.model.js");
 // const News = require('../models/News.model.js');
 // const { Models } = require("../lib/MorphineOrm");
 // const dayjs = require('dayjs');
@@ -14,21 +14,21 @@ const viewsPath = path.join(__dirname, "../views");
 
 const eta = new Eta({
   views: viewsPath, // Important: absolute path!
-  cache: false
+  cache: false,
 });
 
 const getHome = async (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Origin", "*");
 
-    let dogs = await Dogs.find().populate('kind').exec();
+  let dogs = await Dogs.find().populate("kind").exec();
 
-    res.send(eta.render("../views/home.eta", { dogs })) ;
-    // res.render("home.eta", { dogs });
+  res.send(eta.render("../views/home.eta", { dogs }));
+  // res.render("home.eta", { dogs });
 
-    // res.redirect('/cani/list');
-}
+  // res.redirect('/cani/list');
+};
 // const getNews = async (req, res) => {
-    
+
 //  let news = await News.find();
 //  console.log(news);
 //     res.render("news.eta", { news });
@@ -36,10 +36,10 @@ const getHome = async (req, res) => {
 //     // res.redirect('/cani/list');
 // }
 const getLogin = async (req, res) => {
-    res.render("login.eta", {});
+  res.render("login.eta", {});
 
-    // res.redirect('/cani/list');
-}
+  // res.redirect('/cani/list');
+};
 
 // const getVisit = async (req, res) => {
 //     let cane = await Dogs.findone({ do_id: req.params.id }).exec();
@@ -49,30 +49,27 @@ const getLogin = async (req, res) => {
 // }
 
 const postLogin = async (req, res) => {
-
-
-
-    const { email, password } = req.body;
-    try {
-        const userIsValid = await validateUser(email, password);
-        if (userIsValid) {
-            // User's credentials are valid
-            req.session.userId = userIsValid.id; // Or whatever user identifier you use
-            res.redirect('/dashboard'); // Redirect to a dashboard or home page
-        } else {
-            // User's credentials are invalid
-            res.status(401).send('Invalid credentials');
-        }
-    } catch (error) {
-        // Handle errors, e.g., database connection issues
-        res.status(500).send('An error occurred during login');
+  const { email, password } = req.body;
+  try {
+    const userIsValid = await validateUser(email, password);
+    if (userIsValid) {
+      // User's credentials are valid
+      req.session.userId = userIsValid.id; // Or whatever user identifier you use
+      res.redirect("/dashboard"); // Redirect to a dashboard or home page
+    } else {
+      // User's credentials are invalid
+      res.status(401).send("Invalid credentials");
     }
-}
+  } catch (error) {
+    // Handle errors, e.g., database connection issues
+    res.status(500).send("An error occurred during login");
+  }
+};
 
-// const getCaniList = async (req, res) => {
-//     let dogs = await Dogs.find().populate("kind").exec();
-//     res.render("cani_list.eta", { dogs });
-// }
+const getDogsList = async (req, res) => {
+  let dogs = await Dogs.find().populate("kind").exec();
+  res.send(eta.render("../views/dogs_list.eta", { dogs }));
+};
 // const getBoxList = async (req, res) => {
 //     let stalli = await Box.find();
 //     res.render("box_list.eta", { stalli });
@@ -90,15 +87,13 @@ const postLogin = async (req, res) => {
 //     res.render("cane_details.eta", { cane });
 // }
 
-
-
 module.exports = {
-    getLogin,
-    getHome,
-    // getCaniList,
-    // getCaneId,
-    // postLogin,
-    // getBoxList,
-    // getNews,
-    // getVisit,
-}
+  getLogin,
+  getHome,
+  getDogsList,
+  // getCaneId,
+  // postLogin,
+  // getBoxList,
+  // getNews,
+  // getVisit,
+};

@@ -1,15 +1,15 @@
-const Cani = require("../models/Dogs.model2.js");
+// const Cani = require("../services/Dogs.model2.js");
 
-const { Models } = require("../lib/MorphineOrm");
+const { MorphineDb, Models, loadModels } = require("morphine-orm");
 const { Dogs } = Models;
 
 const fs = require("fs");
-let formidable = require("formidable");
+// let formidable = require("formidable");
 const { log } = require("console");
 const path = require("path");
 
 module.exports = {
-  getCani: async (req, res) => {
+  getDogs: async (req, res) => {
     // let rows = await Cani.find();
     // let dog = await Dogs.create({
     //     name: "toto",
@@ -20,24 +20,31 @@ module.exports = {
     let rows = await Dogs.find().populate("kind").populate("dogsbox").exec();
     res.send({ data: rows });
   },
-  
+
   getCaneId: async (req, res) => {
     // let row = await Cani.findone(req.params.id);
     let row = await Dogs.findone({ do_id: req.params.id })
       .populate("kind")
       .exec();
     console.log("🚀 ~ file: Cani.controller.js:23 ~ getCaneId: ~ row:", row);
-let AttachmentsList = [];
-const uploadFolder = path.join(__dirname, "../assets/cani/",`${req.params.id}`);
+    let AttachmentsList = [];
+    const uploadFolder = path.join(
+      __dirname,
+      "../assets/cani/",
+      `${req.params.id}`
+    );
 
-    fs.readdir (uploadFolder, (err, files) => { // Read the directory
-      if (err) { // Handle the error
-        console.error (err);
+    fs.readdir(uploadFolder, (err, files) => {
+      // Read the directory
+      if (err) {
+        // Handle the error
+        console.error(err);
         // return AttachmentsList;
       }
-      files.forEach (file => { // Loop through the files
-        AttachmentsList.push(file)
-        console.log (file); // Display the file name
+      files.forEach((file) => {
+        // Loop through the files
+        AttachmentsList.push(file);
+        console.log(file); // Display the file name
       });
       console.log(AttachmentsList); // Display the file name
       res.send({ data: row, files: AttachmentsList });
@@ -56,7 +63,7 @@ const uploadFolder = path.join(__dirname, "../assets/cani/",`${req.params.id}`);
     // console.log(row.do_id);
     // saveImage(req, row.do_id);
     // const form = formidable({});
-    
+
     res.send({
       data: row,
       FormData: form,
@@ -85,14 +92,18 @@ const uploadFolder = path.join(__dirname, "../assets/cani/",`${req.params.id}`);
     };
 
     let form = new formidable.IncomingForm(options);
-    const uploadFolder = path.join(__dirname, "../assets/cani/",`${req.params.id}`);
+    const uploadFolder = path.join(
+      __dirname,
+      "../assets/cani/",
+      `${req.params.id}`
+    );
 
-
-    if (!fs.existsSync (uploadFolder)) { // Check if the folder exists
-      fs.mkdirSync (uploadFolder); // Create the folder if not
-      console.log ('Folder created successfully.');
+    if (!fs.existsSync(uploadFolder)) {
+      // Check if the folder exists
+      fs.mkdirSync(uploadFolder); // Create the folder if not
+      console.log("Folder created successfully.");
     } else {
-      console.log ('Folder already exists.');
+      console.log("Folder already exists.");
     }
     // fs.readdir (uploadFolder, (err, files) => { // Read the directory
     //   if (err) { // Handle the error
@@ -113,9 +124,6 @@ const uploadFolder = path.join(__dirname, "../assets/cani/",`${req.params.id}`);
 
     [fields, files] = await form.parse(req);
     console.log(files);
-
-
-
 
     res.send({ data: row });
   },

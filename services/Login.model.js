@@ -1,5 +1,5 @@
 const { log } = require("console");
-let db = require("../models/MariaDB.js");
+let db = require("./MariaDB.js");
 const fs = require("fs");
 
 // Your user validation function

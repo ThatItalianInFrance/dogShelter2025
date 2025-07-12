@@ -1,33 +1,32 @@
-const Stock = require('../models/Stock.model.js');
+const Stock = require("../services/Stock.model.js");
 
 module.exports = {
- getStock: async (req, res) => {
-  let rows = await Stock.find();
-  res.send({ data: rows });
- },
- getStockId: async (req, res) => {
-  let row = await Stock.findone(req.params.id);
-  res.send({ data: row });
- },
- postStock: async (req, res) => {
-  let row = await Stock.create(req.body);
-  console.log(row.id);
-  // let id = await Stock.create(req.body)
-  console.log(row.id);
-  Stock.saveImage(req, row.id);
-  res.send({ data: row });
- },
- putStockId: async (req, res) => {
-  let row = await Stock.update(req.params.id, req.body);
-  Stock.saveImage(req, row.id);
-  res.send({ data: row });
- },
- deleteStockId: async (req, res) => {
-  let row = await Stock.delete(req.params.id);
-  res.send({ data: row });
- }
-}
-
+  getStock: async (req, res) => {
+    let rows = await Stock.find();
+    res.send({ data: rows });
+  },
+  getStockId: async (req, res) => {
+    let row = await Stock.findone(req.params.id);
+    res.send({ data: row });
+  },
+  postStock: async (req, res) => {
+    let row = await Stock.create(req.body);
+    console.log(row.id);
+    // let id = await Stock.create(req.body)
+    console.log(row.id);
+    Stock.saveImage(req, row.id);
+    res.send({ data: row });
+  },
+  putStockId: async (req, res) => {
+    let row = await Stock.update(req.params.id, req.body);
+    Stock.saveImage(req, row.id);
+    res.send({ data: row });
+  },
+  deleteStockId: async (req, res) => {
+    let row = await Stock.delete(req.params.id);
+    res.send({ data: row });
+  },
+};
 
 // function saveImage(req, id) {
 //     console.log("saveimage fired");
