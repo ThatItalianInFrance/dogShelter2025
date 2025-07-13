@@ -6,13 +6,14 @@ const cors = require("cors");
 const path = require("path");
 require("dotenv").config({ path: `.env.local` });
 const db = require("./services/MariaDB.js");
-// const db = require("./models/Db.js");
 // const fs = require("fs");
 // const dayjs = require('dayjs')
 // const { log } = require("console");
 const { MorphineDb, Models, loadModels } = require("morphine-orm");
 // import { MorphineDb, loadModels } from "morphine-orm";
-// const { DbMysql, Models, loadModels } = require("./lib/MorphineOrm");
+
+app.locals.title = "Dog Shelter 2025"
+
 
 async function initApp() {
   await db.initMySQL();
@@ -78,7 +79,7 @@ async function initExpress() {
   // Set up a whitelist and check against it:
   // let whitelist = [
   //   "http://localhost:5173",
-  //   "http://localhost:5173/cani/1.jpg",
+  //   "http://localhost:5173/dogs/1.jpg",
   //   "*",
   // ]; // Replace with your client's origin(s)
   // let corsOptions = {
@@ -90,7 +91,7 @@ async function initExpress() {
   //   // AccessControlAllowOrigin: "*",
   // };
   app.use(cors());
-
+app.use(require("./middlewares/setGlobals"));
   app.use(express.static("assets"));
 }
 

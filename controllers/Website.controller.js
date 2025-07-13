@@ -17,12 +17,15 @@ const eta = new Eta({
   cache: false,
 });
 
+// Set global variables
+
+
 const getHome = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-
+// const backofficeUrl = process.env.BACKOFFICE_URL
   let dogs = await Dogs.find().populate("kind").exec();
-
-  res.send(eta.render("../views/home.eta", { dogs }));
+const backofficeUrl = res.locals.backofficeUrl
+  res.send(eta.render("home.eta", { dogs, backofficeUrl }));
   // res.render("home.eta", { dogs });
 
   // res.redirect('/cani/list');
