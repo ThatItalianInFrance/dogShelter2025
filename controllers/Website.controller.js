@@ -8,24 +8,13 @@ const Login = require("../services/Login.model.js");
 // const { Models } = require("../lib/MorphineOrm");
 const dayjs = require('dayjs');
 const { Dogs } = Models;
-const path = require("path");
-const { Eta } = require("eta");
-const viewsPath = path.join(__dirname, "../views");
-
-const eta = new Eta({
-  views: viewsPath, // Important: absolute path!
-  cache: false,
-});
-
-// Set global variables
-
 
 const getHome = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
 // const backofficeUrl = process.env.BACKOFFICE_URL
   let dogs = await Dogs.find().populate("kind").exec();
-const backofficeUrl = res.locals.backofficeUrl
-  res.send(eta.render("home.eta", { dogs, backofficeUrl }));
+
+  res.render("home.eta", { dogs });
   // res.render("home.eta", { dogs });
 
   // res.redirect('/cani/list');
@@ -71,7 +60,7 @@ const postLogin = async (req, res) => {
 
 const getDogsList = async (req, res) => {
   let dogs = await Dogs.find().populate("kind").exec();
-  res.send(eta.render("../views/dogs_list.eta", { dogs }));
+  res.render("../views/dogs_list.eta", { dogs });
 };
 // const getBoxList = async (req, res) => {
 //     let stalli = await Box.find();
@@ -87,7 +76,7 @@ const getDogId = async (req, res) => {
     dog.months = Math.round((Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
     console.log( (Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
     dog.months = dayjs().diff(dog.do_birth, 'months')
-    res.send(eta.render("dog_details.eta", { dog }));
+    res.render("dog_details.eta", { dog });
 }
 
 module.exports = {

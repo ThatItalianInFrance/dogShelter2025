@@ -12,8 +12,21 @@ const db = require("./services/MariaDB.js");
 const { MorphineDb, Models, loadModels } = require("morphine-orm");
 // import { MorphineDb, loadModels } from "morphine-orm";
 
-app.locals.title = "Dog Shelter 2025"
-
+function buildEtaEngine() {
+  return (path, opts, callback) => {
+    try {
+      const fileContent = eta.readFile(path);
+      const renderedTemplate = eta.renderString(fileContent, opts);
+      callback(null, renderedTemplate);
+    } catch (error) {
+      callback(error);
+    };
+  };
+}
+// Setup eta
+const eta = new Eta({ views: path.join(__dirname, "views") })
+app.engine("eta", buildEtaEngine())
+app.set("view engine", "eta")
 
 async function initApp() {
   await db.initMySQL();
@@ -91,6 +104,9 @@ async function initExpress() {
   //   // AccessControlAllowOrigin: "*",
   // };
   app.use(cors());
+// When setting up ETA
+
+
 app.use(require("./middlewares/setGlobals"));
   app.use(express.static("assets"));
 }
