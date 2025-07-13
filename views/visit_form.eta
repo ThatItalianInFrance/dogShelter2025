@@ -1,0 +1,121 @@
+<% layout("lay.eta") %>
+<script setup></script>
+<style>
+	.img-thumbnail {
+		width: 300px;
+		/*fixed width*/
+		height: 300px;
+		/* fixed height to maintain the aspect ratio */
+		object-fit: cover;
+		/* this will ensure that the image covers the area without distortion */
+	}
+</style>
+
+<body class="bg-light">
+	<div class="container my-5">
+		<div class="py-5 text-center">
+			<h2>Schedule Your Shelter Visit</h2>
+			
+			<p class="lead">
+				
+				We are delighted that you're interested in meeting <%= it.dog?.do_name %>.
+				Please fill out this form to schedule a visit to our shelter. Our staff
+				will be in touch to confirm your appointment.
+			</p>
+		</div>
+		<div class="col-md-4">
+			<h4 class="mb-3">Pet Information</h4>
+			<div class="card p-2 mt-4">
+				<div class="card-body text-center">
+					<img src="/dogs/<%= it.dog?.do_id %>.jpg" alt="avatar" class="rounded-circle img-fluid img-thumbnail" />
+					<h5 class="my-3">Name: <%= it.dog?.do_name %></h5>
+					<h6 class="my-3">Size: <%= it.dog?.do_size %></h6>
+					<p class="text-muted mb-1">Character: <%= it.dog?.do_attitude %></p>
+					<p class="text-muted mb-4">Sex: <%= it.dog?.do_sex %></p>
+					<p class="text-muted mb-4">Age: <%= it.dog?.do_birth %></p>
+
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 ">
+				<h4 class="mb-3">Visitor Information</h4>
+				<form class="needs-validation" novalidate="">
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="firstName">First name</label>
+							<input type="text" class="form-control" id="firstName" placeholder="" value="" required="" />
+							<div class="invalid-feedback">Valid first name is required.</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="lastName">Last name</label>
+							<input type="text" class="form-control" id="lastName" placeholder="" value="" required="" />
+							<div class="invalid-feedback">Valid last name is required.</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="you@example.com" required="" />
+						<div class="invalid-feedback">
+							Please enter a valid email address for confirmation.
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="phone">Phone</label>
+						<input type="tel" class="form-control" id="phone" placeholder="123-456-7890" required="" />
+						<div class="invalid-feedback">
+							Please enter a valid phone number.
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="preferredDate">Preferred Date of Visit</label>
+						<input type="date" class="form-control" id="preferredDate" required="" />
+						<div class="invalid-feedback">
+							Please choose a preferred date for the visit.
+						</div>
+					</div>
+
+					<div class="col-md-6 mb-3">
+						<label for="preferredTime">Preferred Time of Visit</label>
+						<input type="time" class="form-control" id="preferredTime" required="" />
+						<div class="invalid-feedback">
+							Please choose a preferred time for the visit.
+						</div>
+					</div>
+					</div>
+
+					<div class="mb-3">
+						<label for="comments">Additional Comments (Optional)</label>
+						<textarea class="form-control" id="comments" placeholder="Let us know if you have any special requests."></textarea>
+					</div>
+
+					<hr class="mb-4" />
+					<button class="btn btn-primary btn-lg btn-block" type="submit">
+						Submit Visit Request
+					</button>
+				</form>
+			</div>
+			
+
+			<footer class="my-5 pt-5 text-muted text-center text-small">
+				<p class="mb-1">© 2023 Dog Shelter Name</p>
+				<ul class="list-inline">
+					<li class="list-inline-item"><a href="#">Privacy</a></li>
+					<li class="list-inline-item"><a href="#">Terms</a></li>
+					<li class="list-inline-item"><a href="#">Support</a></li>
+				</ul>
+			</footer>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script>
+			window.jQuery ||
+				document.write(
+					'<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>'
+				);
+		</script>
+		<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+		<!-- <script src="form-validation.js"></script> -->
+</body>

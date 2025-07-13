@@ -8,7 +8,7 @@ router.get('/', cors(), websiteController.getHome);
 router.get('/login', websiteController.getLogin);
 router.get('/dogs/list', websiteController.getDogsList);
 router.get('/dog/:id', websiteController.getDogId);
-// router.get('/cane/visit/:id', websiteController.getVisit);
+router.get('/dog/visit/:id', websiteController.getVisit);
 // router.get('/stalli', websiteController.getBoxList);
 // router.get('/news', websiteController.getNews);
 

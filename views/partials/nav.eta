@@ -34,7 +34,7 @@
   				</li>
   			</ul>
   			<form class="d-flex" role="search">
-  				<img src="ukraine.bmp" alt="a" height="40px">
+  				<img src="/ukraine.bmp" alt="a" height="40px">
   				<input class="form-control me-2" type="search" placeholder="Search is disabled" aria-label="Search" />
   				<button class="btn btn-outline-success" type="submit">
   					Search

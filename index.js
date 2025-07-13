@@ -27,6 +27,7 @@ function buildEtaEngine() {
 const eta = new Eta({ views: path.join(__dirname, "views") })
 app.engine("eta", buildEtaEngine())
 app.set("view engine", "eta")
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 async function initApp() {
   await db.initMySQL();

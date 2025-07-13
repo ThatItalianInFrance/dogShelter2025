@@ -15,30 +15,27 @@ const getHome = async (req, res) => {
   let dogs = await Dogs.find().populate("kind").exec();
 
   res.render("home.eta", { dogs });
-  // res.render("home.eta", { dogs });
-
-  // res.redirect('/cani/list');
 };
 // const getNews = async (req, res) => {
-
 //  let news = await News.find();
 //  console.log(news);
 //     res.render("news.eta", { news });
-
 //     // res.redirect('/cani/list');
 // }
 const getLogin = async (req, res) => {
   res.render("login.eta", {});
-
   // res.redirect('/cani/list');
 };
 
-// const getVisit = async (req, res) => {
-//     let cane = await Dogs.findone({ do_id: req.params.id }).exec();
-//     res.render("visit_form.eta", { cane });
+const getVisit = async (req, res) => {
+  console.log("ID from params:", req.params.id);
+console.log("Type:", typeof req.params.id);
+    let dog = await Dogs.findone({ do_id: req.params.id }).exec();
+    console.log(dog)
+    res.render("visit_form.eta", { dog });
 
-//     // res.redirect('/cani/list');
-// }
+    // res.redirect('/cani/list');
+}
 
 const postLogin = async (req, res) => {
   const { email, password } = req.body;
@@ -87,5 +84,5 @@ module.exports = {
   // postLogin,
   // getBoxList,
   // getNews,
-  // getVisit,
+  getVisit,
 };
