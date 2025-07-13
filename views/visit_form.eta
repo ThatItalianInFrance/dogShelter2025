@@ -23,22 +23,24 @@
 				will be in touch to confirm your appointment.
 			</p>
 		</div>
-		<div class="col-md-4">
-			<h4 class="mb-3">Pet Information</h4>
-			<div class="card p-2 mt-4">
-				<div class="card-body text-center">
-					<img src="/dogs/<%= it.dog?.do_id %>.jpg" alt="avatar" class="rounded-circle img-fluid img-thumbnail" />
-					<h5 class="my-3">Name: <%= it.dog?.do_name %></h5>
-					<h6 class="my-3">Size: <%= it.dog?.do_size %></h6>
-					<p class="text-muted mb-1">Character: <%= it.dog?.do_attitude %></p>
-					<p class="text-muted mb-4">Sex: <%= it.dog?.do_sex %></p>
-					<p class="text-muted mb-4">Age: <%= it.dog?.do_birth %></p>
+		<div class="container">
+			<div class="row my-4">
 
+				<div class="col-md-4">
+					<h4 class="mb-3">Pet Information</h4>
+					<div class="card p-2 mt-4">
+						<div class="card-body text-center">
+							<img src="/dogs/<%= it.dog?.do_id %>.jpg" alt="avatar" class="rounded-circle img-fluid img-thumbnail" />
+							<h5 class="my-3">Name: <%= it.dog?.do_name %></h5>
+							<h6 class="my-3">Size: <%= it.dog?.do_size %></h6>
+							<p class="text-muted mb-1">Character: <%= it.dog?.do_attitude %></p>
+							<p class="text-muted mb-4">Sex: <%= it.dog?.do_sex %></p>
+							<p class="text-muted mb-4">Age: <%= it.dog?.do_birth %></p>
+							
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-8 ">
+				<div class="col-md-8 ">
 				<h4 class="mb-3">Visitor Information</h4>
 				<form class="needs-validation" novalidate="">
 					<div class="row">
@@ -98,6 +100,8 @@
 					</button>
 				</form>
 			</div>
+		</div>
+			
 			
 
 			<footer class="my-5 pt-5 text-muted text-center text-small">
