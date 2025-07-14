@@ -10,7 +10,7 @@ router.get('/dogs/list', websiteController.getDogsList);
 router.get('/dog/:id', websiteController.getDogId);
 router.get('/dog/visit/:id', websiteController.getVisit);
 // router.get('/stalli', websiteController.getBoxList);
-// router.get('/news', websiteController.getNews);
+router.get('/news', websiteController.getNews);
 
 router.post('/login', loginController.logUser);
 module.exports = router;

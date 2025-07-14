@@ -13,7 +13,6 @@ module.exports = {
     let row = await Shelter.create(req.body);
     console.log(row.id);
     // let id = await Shelter.create(req.body)
-    console.log(row.id);
     // Shelter.saveImage(req, row.id);
     res.send({ data: row });
   },

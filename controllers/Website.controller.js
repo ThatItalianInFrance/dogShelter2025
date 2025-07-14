@@ -7,7 +7,7 @@ const Login = require("../services/Login.model.js");
 // const News = require('../models/News.model.js');
 // const { Models } = require("../lib/MorphineOrm");
 const dayjs = require('dayjs');
-const { Dogs } = Models;
+const { Dogs, News } = Models;
 
 const getHome = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -16,12 +16,12 @@ const getHome = async (req, res) => {
 
   res.render("home.eta", { dogs });
 };
-// const getNews = async (req, res) => {
-//  let news = await News.find();
+const getNews = async (req, res) => {
+ let news = await News.find();
 //  console.log(news);
-//     res.render("news.eta", { news });
-//     // res.redirect('/cani/list');
-// }
+    res.render("news.eta", { news });
+    // res.redirect('/cani/list');
+}
 const getLogin = async (req, res) => {
   res.render("login.eta", {});
   // res.redirect('/cani/list');
@@ -31,7 +31,7 @@ const getVisit = async (req, res) => {
   console.log("ID from params:", req.params.id);
 console.log("Type:", typeof req.params.id);
     let dog = await Dogs.findone({ do_id: req.params.id }).exec();
-    console.log(dog)
+    // console.log(dog)
     res.render("visit_form.eta", { dog });
 
     // res.redirect('/cani/list');
@@ -83,6 +83,6 @@ module.exports = {
   getDogId,
   // postLogin,
   // getBoxList,
-  // getNews,
+  getNews,
   getVisit,
 };
