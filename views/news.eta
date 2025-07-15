@@ -125,6 +125,8 @@
 		</div>
 
 		<div class="row mb-2">
+
+			<% for (let i=0; i < it.news.length; i++) { %> <% const news=it.news[i];%>
 			<div class="col-md-6">
 				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 					<div class="col p-4 d-flex flex-column position-static">
@@ -147,6 +149,8 @@
 					</div>
 				</div>
 			</div>
+			<% } %>
+			
 			<div class="col-md-6">
 				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 					<div class="col p-4 d-flex flex-column position-static">
@@ -176,10 +180,7 @@
 				<h3 class="pb-4 mb-4 fst-italic border-bottom">
 					From the Firehose
 				</h3>
-				<% for (let i=0; i < it.news.length; i++) { %> <% const news=it.news[i];
-				
-						%>
-
+				<% for (let i=0; i < it.news.length; i++) { %> <% const news=it.news[i];%>
 						<article class="blog-post">
 							<h2 class="display-5 link-body-emphasis mb-1"><%= news.title %></h2>
 						<div class="">
@@ -196,11 +197,7 @@
 											<small class=""><%= news.title %></small>
 					<p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
 					<p class=""><%= news.content %></p>
-
-										
-			
 										</div>
-			
 									</div>
 								</div>
 							</a>

@@ -17,14 +17,11 @@ const getHome = async (req, res) => {
   res.render("home.eta", { dogs });
 };
 const getNews = async (req, res) => {
- let news = await News.find();
-//  console.log(news);
+ let news = await News.find().exec();
     res.render("news.eta", { news });
-    // res.redirect('/cani/list');
 }
 const getLogin = async (req, res) => {
   res.render("login.eta", {});
-  // res.redirect('/cani/list');
 };
 
 const getVisit = async (req, res) => {
