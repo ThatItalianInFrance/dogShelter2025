@@ -62,14 +62,13 @@ const getDogsList = async (req, res) => {
 // }
 const getDogId = async (req, res) => {
     let dog = await Dogs.findone({ do_id: req.params.id }).populate("kind").exec();
-    console.log("🚀 ~ file: Website.controller.js:12 ~ getCaneId ~ cane:", dog)
     if (!dog) {
         res.redirect("/dogs/list");
         return;
     }
     dog.months = Math.round((Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
-    console.log( (Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
-    dog.months = dayjs().diff(dog.do_birth, 'months')
+    dog.months = dayjs().diff(dog.do_birth, 'months') % 12
+    dog.years = Math.floor(dayjs().diff(dog.do_birth, 'months') / 12)
     res.render("dog_details.eta", { dog });
 }
 

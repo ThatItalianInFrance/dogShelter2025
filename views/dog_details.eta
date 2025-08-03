@@ -18,9 +18,9 @@
           <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
             <ol class="breadcrumb mb-0">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">User</a></li>
+              <li class="breadcrumb-item"><a href="#">Dog</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                User Profile
+                Dog Profile
               </li>
             </ol>
           </nav>
@@ -36,7 +36,22 @@
 							<h6 class="my-3">Size: <%= it.dog.do_size %></h6>
 							<p class="text-muted mb-1">Character: <%= it.dog.do_attitude %></p>
 							<p class="text-muted mb-4">Sex: <%= it.dog.do_sex %></p>
-							<p class="text-muted mb-4">Age: <%= it.dog.do_birth %></p>
+							<p class="text-muted mb-4">DoB: <%= it.dog.do_birth %> (mm/dd/yyyy)
+<p>Age:
+	<% if (it.dog.years > 0) { %>
+		<span>
+			<%= it.dog.years %> 
+			<%= it.dog.years < 2 ? "year" : "years" %>
+			<%	} %> 
+		</span>
+		<% if (it.dog.months <= 12 && it.dog.months > 0) { %>
+			<span>
+				<%= it.dog.months %> 
+				<%= it.dog.months < 2 ? "month" : "months" %>
+</span>
+			<%	} %> 
+		</p>
+						</p>
 							<div class="d-flex justify-content-center mb-2">
 								<a href="/dog/visit/<%= it.dog.do_id %>"><button type="button" class="btn btn-primary">Visit</button></a>
 							<button type="button" class="btn btn-outline-primary ms-1">
@@ -45,33 +60,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="card mb-4 mb-lg-0">
-						<div class="card-body p-0">
-							<ul class="list-group list-group-flush rounded-3">
-								<li class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fas fa-globe fa-lg text-warning"></i>
-									<p class="mb-0">https://mdbootstrap.com</p>
-								</li>
-								<li class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fab fa-github fa-lg" style="color: #333333"></i>
-									<p class="mb-0">mdbootstrap</p>
-								</li>
-								<li class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fab fa-twitter fa-lg" style="color: #55acee"></i>
-									<p class="mb-0">@mdbootstrap</p>
-								</li>
-								<li class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fab fa-instagram fa-lg" style="color: #ac2bac"></i>
-									<p class="mb-0">mdbootstrap</p>
-								</li>
-								<li class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fab fa-facebook-f fa-lg" style="color: #3b5998"></i>
-									<p class="mb-0">mdbootstrap</p>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+					
 				<div class="col-lg-8">
 					<div class="card mb-4">
 						<div class="card-body">
@@ -80,7 +69,7 @@
 									<p class="mb-0">Breed / Race</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0"><%= it.dog.razza %></p>
+									<p class="text-muted mb-0"><%= it.dog.kind.ki_name %></p>
 								</div>
 							</div>
 							<hr />
