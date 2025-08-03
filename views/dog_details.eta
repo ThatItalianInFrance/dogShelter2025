@@ -27,165 +27,102 @@
         </div>
       </div>
 
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="card mb-4">
-						<div class="card-body text-center">
-							<img src="/dogs/<%= it.dog.do_id %>.jpg" alt="avatar" class="rounded-circle img-fluid img-thumbnail" />
-							<h5 class="my-3">Name: <%= it.dog.do_name %></h5>
-							<h6 class="my-3">Size: <%= it.dog.do_size %></h6>
-							<p class="text-muted mb-1">Character: <%= it.dog.do_attitude %></p>
-							<p class="text-muted mb-4">Sex: <%= it.dog.do_sex %></p>
-							<p class="text-muted mb-4">DoB: <%= it.dog.do_birth %> (mm/dd/yyyy)
-<p>Age:
-	<% if (it.dog.years > 0) { %>
-		<span>
-			<%= it.dog.years %> 
-			<%= it.dog.years < 2 ? "year" : "years" %>
-			<%	} %> 
-		</span>
-		<% if (it.dog.months <= 12 && it.dog.months > 0) { %>
-			<span>
-				<%= it.dog.months %> 
-				<%= it.dog.months < 2 ? "month" : "months" %>
-</span>
-			<%	} %> 
-		</p>
-						</p>
-							<div class="d-flex justify-content-center mb-2">
-								<a href="/dog/visit/<%= it.dog.do_id %>"><button type="button" class="btn btn-primary">Visit</button></a>
-							<button type="button" class="btn btn-outline-primary ms-1">
-										Message
-									</button>
-							</div>
-						</div>
-					</div>
-					
-				<div class="col-lg-8">
-					<div class="card mb-4">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-sm-3">
-									<p class="mb-0">Breed / Race</p>
-								</div>
-								<div class="col-sm-9">
-									<p class="text-muted mb-0"><%= it.dog.kind.ki_name %></p>
-								</div>
-							</div>
-							<hr />
-							<div class="row">
-								<div class="col-sm-3">
-									<p class="mb-0">Entry Date</p>
-								</div>
-								<div class="col-sm-9">
-									<p class="text-muted mb-0">DD/MM/AAAA</p>
-								</div>
-							</div>
-							<hr />
-							<div class="row">
-								<div class="col-sm-3">
-									<p class="mb-0">Chip</p>
-								</div>
-								<div class="col-sm-9">
-									<p class="text-muted mb-0">9876543210</p>
-								</div>
-							</div>
-							<hr />
-							<div class="row">
-								<div class="col-sm-3">
-									<p class="mb-0">Tattoo</p>
-								</div>
-								<div class="col-sm-9">
-									<p class="text-muted mb-0">N/A</p>
-								</div>
-							</div>
-							<hr />
-							<div class="row">
-								<div class="col-sm-3">
-									<p class="mb-0">Owner / Rescued from</p>
-								</div>
-								<div class="col-sm-9">
-									<p class="text-muted mb-0">The streets</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="card mb-4 mb-md-0">
-								<div class="card-body">
-									<p class="mb-4">
-										<span class="text-primary font-italic me-1">assigment</span>
-										Project Status
-									</p>
-									<p class="mb-1" style="font-size: 0.77rem">Web Design</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">
-										Website Markup
-									</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">One Page</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">
-										Mobile Template
-									</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">
-										Backend API
-									</p>
-									<div class="progress rounded mb-2" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="card mb-4 mb-md-0">
-								<div class="card-body">
-									<p class="mb-4">
-										<span class="text-primary font-italic me-1">assigment</span>
-										Project Status
-									</p>
-									<p class="mb-1" style="font-size: 0.77rem">Web Design</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">
-										Website Markup
-									</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">One Page</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">
-										Mobile Template
-									</p>
-									<div class="progress rounded" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-									<p class="mt-4 mb-1" style="font-size: 0.77rem">
-										Backend API
-									</p>
-									<div class="progress rounded mb-2" style="height: 5px">
-										<div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img
+                src="/dogs/<%= it.dog.do_id %>.jpg"
+                alt="avatar"
+                class="rounded-circle img-fluid img-thumbnail"
+              />
+              <h5 class="my-3">Name: <%= it.dog.do_name %></h5>
+              <h6 class="my-3">Size: <%= it.dog.do_size %></h6>
+              <p class="text-muted mb-1">
+                Character: <%= it.dog.do_attitude %>
+              </p>
+              <p class="text-muted mb-4">Sex: <%= it.dog.do_sex %></p>
+              <p class="text-muted mb-4">
+                DoB: <%= it.dog.do_birth %> (mm/dd/yyyy)
+              </p>
+              <p>
+                Age: <% if (it.dog.years > 0) { %>
+                <span>
+                  <%= it.dog.years %> <%= it.dog.years < 2 ? "year" : "years" %>
+                  <% } %>
+                </span>
+                <% if (it.dog.months <= 12 && it.dog.months > 0) { %>
+                <span>
+                  <%= it.dog.months %> <%= it.dog.months < 2 ? "month" :
+                  "months" %>
+                </span>
+                <% } %>
+              </p>
+
+              <div class="d-flex justify-content-center mb-2">
+                <a href="/dog/visit/<%= it.dog.do_id %>"
+                  ><button type="button" class="btn btn-primary">
+                    Visit
+                  </button></a
+                >
+                <button type="button" class="btn btn-outline-primary ms-1">
+                  Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Breed / Race</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= it.dog.kind.ki_name %></p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Entry Date</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">DD/MM/AAAA</p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Chip</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">9876543210</p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Tattoo</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">N/A</p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Owner / Rescued from</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">The streets</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
