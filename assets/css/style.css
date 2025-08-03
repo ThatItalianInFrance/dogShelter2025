@@ -1,0 +1,19 @@
+body {
+  /* color: #a2a2a2; */
+}
+
+  h1 {
+  /* color: blue; */
+  /* background-color: blue; */
+  }
+
+  p {
+    /* color: blue; */
+    line-height: 2;
+  }
+
+  .nav-item:hover {
+color: brown;
+background-color: bisque;
+border-radius: 5px;
+  }
