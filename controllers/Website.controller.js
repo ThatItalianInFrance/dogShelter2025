@@ -54,6 +54,7 @@ const postLogin = async (req, res) => {
 
 const getDogsList = async (req, res) => {
   let dogs = await Dogs.find().populate("kind").exec();
+  console.log(dogs)
   res.render("../views/dogs_list.eta", { dogs });
 };
 // const getBoxList = async (req, res) => {
