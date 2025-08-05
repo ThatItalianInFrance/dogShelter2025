@@ -1,10 +1,10 @@
 <% layout("lay.eta") %>
 <style>
   .img-thumbnail {
-    /* width: 250px; fixed width */
-    /* height: 150px; */
+    /* width: 250px;  */
+    height: 150px;
     /* fixed height to maintain the aspect ratio */
-    /* object-fit: cover; */
+    object-fit: cover;
     /* this will ensure that the image covers the area without distortion */
   }
 </style>
@@ -14,7 +14,7 @@
   <div class="container">
     <div class="row">
       <% for (let i=0; i < it.dogs.length; i++) { %> <% const dog=it.dogs[i]; %>
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-4 col-sm-6 col-lg-3">
         <a
           href="/dog/<%= dog.do_id %>"
           class="link-body-emphasis text-decoration-none text-body-secondary"
@@ -30,7 +30,7 @@
                 <div class="card-title">
                   <h3 class=""><%= dog.do_name %></h3>
                   <div class="">
-                    <small> <%= dog.do_birth %> </small>
+                    <small><%= dog.do_birth %></small>
                     <small><%=dog.do_sex%></small>
                     <small><%=dog.do_coat%></small>
                   </div>
@@ -39,11 +39,14 @@
 
 	<h5 class="">Character:</h5>
 -->
-                <small class="pe-2 border-end"><%= dog.do_attitude %></small>
-                <small class="pe-2 border-end"><%= dog.kind.ki_name %></small>
-                <small class="pe-2 border-end"
-                  ><%= dog.do_biter?"bites":"don't bite" %></small
-                >
+<div class="d-flex mx-auto">
+
+	<small class="mx-auto"><%= dog.do_attitude %></small>
+	<small class="mx-auto"><%= dog.kind.ki_name %></small>
+	<small class="mx-auto"
+	><%= dog.do_biter?"bites":"don't bite" %></small
+	>
+</div>
               </div>
             </div>
           </div>
