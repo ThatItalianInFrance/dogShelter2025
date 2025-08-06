@@ -7,7 +7,7 @@ const Login = require("../services/Login.model.js");
 // const News = require('../models/News.model.js');
 // const { Models } = require("../lib/MorphineOrm");
 const dayjs = require('dayjs');
-const { Dogs, News } = Models;
+const { Dogs, Kinds, News } = Models;
 
 const getHome = async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -53,25 +53,39 @@ const postLogin = async (req, res) => {
 };
 
 const getDogsList = async (req, res) => {
-  // let dogs = await Dogs.find().populate("kind").exec();
-  const page = 1; // page number from client (1-based)
-  const limit = 10;
+  const page = parseInt(req.query.page) || 1;
+  const limit = 1;
   const offset = (page - 1) * limit;
-  let dogs = await Dogs
-  .find("1=1 ORDER BY do_id ASC LIMIT ? OFFSET ?", [limit, offset])
-  .populate("kind")
-  .exec();
-  dogs = dogs.map(dog => {
-    const months = dayjs().diff(dog.do_birth, 'months');
-    return {
-      ...dog, // important for Mongoose objects
-      years: Math.floor(months / 12),
-      months: months % 12
-    };
+  const kind = req.query.kind;
+
+  let query = "1=1";
+  const params = [];
+
+  if (kind) {
+    query += " AND kind.ki_id = ?";
+    params.push(kind);
+  }
+
+  query += " ORDER BY do_name LIMIT ? OFFSET ?";
+  params.push(limit, offset);
+
+  const [dogs, total, kinds] = await Promise.all([
+    Dogs.find(query, params).populate("kind").exec(),
+    Dogs.count().exec(), // optionally add condition here if filtering
+    Kinds.find("1=1 ORDER BY ki_name").exec()
+  ]);
+console.log(kinds)
+  const totalPages = Math.ceil(total / limit);
+
+  res.render("../views/dogs_list.eta", {
+    dogs,
+    kinds,
+    selectedKind: kind,
+    page,
+    totalPages,
   });
-  console.log(dogs)
-  res.render("../views/dogs_list.eta", { dogs });
 };
+
 // const getBoxList = async (req, res) => {
 //     let stalli = await Box.find();
 //     res.render("box_list.eta", { stalli });
