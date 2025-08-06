@@ -54,7 +54,7 @@ const postLogin = async (req, res) => {
 
 const getDogsList = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = 1;
+  const limit = 10;
   const offset = (page - 1) * limit;
   const kind = req.query.kind;
 
@@ -69,12 +69,19 @@ const getDogsList = async (req, res) => {
   query += " ORDER BY do_name LIMIT ? OFFSET ?";
   params.push(limit, offset);
 
-  const [dogs, total, kinds] = await Promise.all([
+  let [dogs, total, kinds] = await Promise.all([
     Dogs.find(query, params).populate("kind").exec(),
     Dogs.count().exec(), // optionally add condition here if filtering
     Kinds.find("1=1 ORDER BY ki_name").exec()
   ]);
-console.log(kinds)
+dogs = dogs.map(dog => {
+  const months = dayjs().diff(dog.do_birth, 'months');
+  return {
+    ...dog, // important for Mongoose objects
+    years: Math.floor(months / 12),
+    months: months % 12
+  };
+});
   const totalPages = Math.ceil(total / limit);
 
   res.render("../views/dogs_list.eta", {

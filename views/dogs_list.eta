@@ -69,6 +69,11 @@
 									🐾 Puppy
 								</span>
 							<% } %>
+							<% if (dog.years >= 10) { %>
+								<span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">
+									🐾 Senior
+								</span>
+							<% } %>
 							<h5 class="card-title fw-semibold text-primary"><%= dog.do_name %></h5>
 							
 							<!-- Dog Info -->
