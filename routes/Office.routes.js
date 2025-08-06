@@ -8,7 +8,7 @@ const dogsController = require('../controllers/Dogs.controller');
 // const userCaniController = require('../controllers/UserCani.controller');
 // const loginController = require('../controllers/Login.controller');
 // const boxController = require('../controllers/Box.controller');
-// const kindController = require('../controllers/Kind.controller');
+const kindController = require('../controllers/Kind.controller');
 // const newsController = require('../controllers/News.controller');
 // const shelterController = require('../controllers/Shelter.controller');
 
@@ -42,7 +42,7 @@ router.get('/animal/:id', dogsController.getDogId);
 // router.delete('/shelter/:id', shelterController.deleteShelterId);
 
 // // KIND Router
-// router.get('/kind', kindController.getKinds);
+router.get('/kind', kindController.getKinds);
 // router.get('/kind/:id', kindController.getKindId);
 // router.post('/kind', kindController.postKind);
 // router.put('/kind/:id', kindController.putKindId);

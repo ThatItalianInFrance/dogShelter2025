@@ -1,6 +1,6 @@
 // const Kind = require('../models/Kind.model.js');
 
-const { Models } = require("../lib/MorphineOrm");
+const { MorphineDb, Models, loadModels } = require("morphine-orm");
 const { Kinds } = Models;
 
 

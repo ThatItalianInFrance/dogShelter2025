@@ -42,11 +42,10 @@
                 Character: <%= it.dog.do_attitude %>
               </p>
               <p class="text-muted mb-4">Sex: <%= it.dog.do_sex %></p>
-              <p class="text-muted mb-4"><%= it.dog.do_biter?"bites":"don't bite" %></p>
               <p class="text-muted mb-4">
                 DoB: <%= it.dog.do_birth %> (mm/dd/yyyy)
               </p>
-              <p class="text-muted mb-1">
+              <p>
                 Age: <% if (it.dog.years > 0) { %>
                 <span>
                   <%= it.dog.years %> <%= it.dog.years < 2 ? "year" : "years" %>
@@ -122,6 +121,7 @@
                 </div>
               </div>
               <hr />
+
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Therapy</p>

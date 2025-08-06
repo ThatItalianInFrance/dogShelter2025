@@ -53,7 +53,22 @@ const postLogin = async (req, res) => {
 };
 
 const getDogsList = async (req, res) => {
-  let dogs = await Dogs.find().populate("kind").exec();
+  // let dogs = await Dogs.find().populate("kind").exec();
+  const page = 1; // page number from client (1-based)
+  const limit = 10;
+  const offset = (page - 1) * limit;
+  let dogs = await Dogs
+  .find("1=1 ORDER BY do_id ASC LIMIT ? OFFSET ?", [limit, offset])
+  .populate("kind")
+  .exec();
+  dogs = dogs.map(dog => {
+    const months = dayjs().diff(dog.do_birth, 'months');
+    return {
+      ...dog, // important for Mongoose objects
+      years: Math.floor(months / 12),
+      months: months % 12
+    };
+  });
   console.log(dogs)
   res.render("../views/dogs_list.eta", { dogs });
 };
@@ -62,12 +77,19 @@ const getDogsList = async (req, res) => {
 //     res.render("box_list.eta", { stalli });
 // }
 const getDogId = async (req, res) => {
+  
+  const { sex, kind } = req.query;
+
+  let query = {};
+  if (sex) query.do_sex = sex;
+  if (kind) query.kind = kind;
+
     let dog = await Dogs.findone({ do_id: req.params.id }).populate("kind").exec();
     if (!dog) {
         res.redirect("/dogs/list");
         return;
     }
-    dog.months = Math.round((Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
+    // dog.months = Math.round((Date.now() - Date.parse(dog.do_birth)) / 1000 / 60 / 60 / 24 / 30);
     dog.months = dayjs().diff(dog.do_birth, 'months') % 12
     dog.years = Math.floor(dayjs().diff(dog.do_birth, 'months') / 12)
     res.render("dog_details.eta", { dog });

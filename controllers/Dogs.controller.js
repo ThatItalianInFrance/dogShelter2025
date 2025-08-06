@@ -17,8 +17,16 @@ module.exports = {
     //     kind: 1,
     //     size: "petit",
     // }).exec(true);
+    const page = 1; // page number from client (1-based)
+const limit = 1;
+const offset = (page - 1) * limit;
+
+const dogs = await Dogs
+  .find("1=1 ORDER BY id DESC LIMIT ? OFFSET ?", [limit, offset])
+  .exec();
+  console.log(dogs)
     let rows = await Dogs.find().populate("kind").populate("dogsbox").exec();
-    res.send({ data: rows });
+    res.send({ data: dogs });
   },
 
   getDogId: async (req, res) => {
@@ -53,11 +61,7 @@ module.exports = {
   },
   postCane: async (req, res) => {
     // let row = await Cani.create(req.body);
-    // console.log(req.body.IncomingForm);
-    console.log("33");
-    // console.log(req);
     // let do_id = await Dogs.create(req.body).exec(true);
-    // console.log(row.id);
     let row = await Dogs.create(req.body).exec(true);
     console.log("line 37");
     // console.log(row.do_id);
