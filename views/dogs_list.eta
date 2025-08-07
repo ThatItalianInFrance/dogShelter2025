@@ -28,8 +28,8 @@
   <div class="container">
 
 		<div class="mb-4">
-			<form method="get" class="d-flex gap-2 align-items-center">
-				<select name="kind" class="form-select w-auto">
+			<form method="get" class="d-flex gap-2 align-items-center" id="breedForm">
+				<select name="kind" class="form-select w-auto" id="breedSelect">
 					<option value="">All Breeds</option>
 					<% for (let k of it.kinds) { %>
 						<option value="<%= k.ki_id %>" <%= it.selectedKind == k.ki_id ? "selected" : "" %>>
@@ -37,8 +37,10 @@
 						</option>
 					<% } %>
 				</select>
-		
-				<button type="submit" class="btn btn-primary">Filter</button>
+		<!--
+
+			<button type="submit" class="btn btn-primary">Filter</button>
+		-->
 			</form>
 		</div>
 		
@@ -46,7 +48,7 @@
     <div class="row">
       <% for (let i=0; i < it.dogs.length; i++) { %> <% const dog=it.dogs[i]; %>
 
-				<div class="col">
+				<div class="col-lg-3 col-md-4 col-sm-6">
 					<div class="card h-100 shadow-sm position-relative border-0 rounded-4 overflow-hidden">
 						
 						
@@ -133,5 +135,13 @@
   }
 }
 getData()
+const breedForm = document.getElementById('breedForm')
+const breedSelector = document.getElementById('breedSelect')
+breedSelector.addEventListener('change', () => {
+	// console.log('item has changed')
+	// console.log(breedSelector.value)
+	breedForm.submit()
+})
+
 
 </script>
